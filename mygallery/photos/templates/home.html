@@ -5,6 +5,7 @@
 <h1 class="text-center">Check out my photoapp</h1>
 
 {% for image_item in images %}
+    <img src="{{image_item.image_url.url}}" alt="Image">
     {{image_item.name}}
     {% for category in image_item.category.all %}
         {{category}}
