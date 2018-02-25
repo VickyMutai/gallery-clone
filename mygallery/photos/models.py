@@ -26,3 +26,9 @@ class Image(models.Model):
 
     class Meta:
         ordering = ['upload_date']
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
