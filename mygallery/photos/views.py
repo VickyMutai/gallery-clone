@@ -4,6 +4,7 @@ from .models import Image,Category,Location
 
 # Create your views here.
 def home (request):
+    
     images = Image.get_images()
     return render(request,'home.html',
                   {"images":images})
@@ -25,3 +26,7 @@ def image(request,image_id):
     except DoesNotExist:
         raise Http404()
     return render(request,'image.html',{"image":image})
+
+def filter_location(request,id):
+    images= Image.filter_by_location(id= location.id)
+    return render(request,'filter.html',{"images":images})

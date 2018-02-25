@@ -56,6 +56,6 @@ class Image(models.Model):
         return images
 
     @classmethod
-    def get_image_by_location(cls,id):
-        images = Image.objects.get(id = Location.id)
+    def filter_by_location(cls,id):
+        images = Image.objects.filter(id=location.id)
         return images
