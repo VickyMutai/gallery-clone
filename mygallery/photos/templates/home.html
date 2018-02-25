@@ -6,7 +6,12 @@
 
 {% for image_item in images %}
     {{image_item.name}}
-
+    {% for category in image_item.category.all %}
+        {{category}}
+    {% endfor %}
+    {% for location in image_item.location.all %}
+        {{location}}
+    {% endfor %}
 {% endfor %}
 
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if categories %}
+        <h2>Found {{categories|length}} of searched term {{message}}</h2>
+        {% else %}
+        <h2>Found 0 categories for the search term {{message}}</h2>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -25,6 +25,11 @@ class Category(models.Model):
     def delete_category(self):
         self.delete()
 
+    @classmethod
+    def search_by_category(cls,search_term):
+        category = cls.objects.filter(name__icontains=search_term)
+        return category
+
 class Image(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
