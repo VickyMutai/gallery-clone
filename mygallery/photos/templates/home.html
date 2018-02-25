@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
-
 {% block content %}
 {{block.super}}
 <h1 class="text-center">Check out my photoapp</h1>
 
 {% for image_item in images %}
-    {% if image_item.image_url %}
-        <img src="{{image_item.image_url.url}}" class="img-responsive img-thumbnail" alt="Image">
-    {% endif %}
-        <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
-        
     {% for category in image_item.category.all %}
-        {{category}}
+        {% if category.name == "animal" %}
+            <h2>{{category}}</h2>
+            {% if image_item.image_url %}
+                <img src="{{image_item.image_url.url}}" class="img-responsive img-thumbnail" alt="Image">
+            {% endif %}
+            <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
+            {% for location in image_item.location.all %}
+                {{location}}
+            {% endfor %}
+        {% else %}
+            <h2>This is not working</h2>
+        {% endif %}
     {% endfor %}
-    {% for location in image_item.location.all %}
-        {{location}}
-    {% endfor %}
+    
 {% endfor %}
 
 {% endblock %}                                                                                                                                                                                                                                                                                                          
