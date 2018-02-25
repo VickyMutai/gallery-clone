@@ -11,6 +11,18 @@ class CategoryTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.nature,Category))
 
+    def test_save_category(self):
+        self.nature.save_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories)>0)
+
+    def test_delete_category(self):
+        self.nature.save_category()
+        self.nature.delete_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories)<1)
+
+
 class LocationTestClass(TestCase):
     #set up method
     def setUp(self):
