@@ -47,6 +47,23 @@ class ImageTestClass(TestCase):
     #set up method
     def setUp(self):
         self.elephant = Image(name="Elephant",description="It is super big")
+        self.elephant.save()
+
+        #creating new category and saving it
+        self.nature = Category(name="nature")
+        self.nature.save()
+
+        #creating new location and saving it
+        self.tsavo = Location(name="Tsavo")
+        self.tsavo.save()
+
+        self.elephant.location.add(self.tsavo)
+        self.elephant.category.add(self.nature)
+
+    def tearDown(self):
+        Category.objects.all().delete()
+        Location.objects.all().delete()
+        Image.objects.all().delete()
 
     #testing instance
     def test_instance(self):

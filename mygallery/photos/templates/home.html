@@ -3,4 +3,10 @@
 {% block content %}
 {{block.super}}
 <h1 class="text-center">Check out my photoapp</h1>
+
+{% for image_item in images %}
+    {{image_item.name}}
+
+{% endfor %}
+
 {% endblock %}
