@@ -34,6 +34,7 @@ class Image(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
     upload_date = models.DateTimeField(auto_now_add=True)
+    image_url = models.ImageField(upload_to = 'categories/')
     location = models.ManyToManyField(Location)
     category = models.ManyToManyField(Category)
 
