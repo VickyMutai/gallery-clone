@@ -32,6 +32,17 @@ class LocationTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.tsavo,Location))
 
+    def test_save_location(self):
+        self.tsavo.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations)>0)
+
+    def test_delete_location(self):
+        self.tsavo.save_location()
+        self.tsavo.delete_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations)<1)
+
 class ImageTestClass(TestCase):
     #set up method
     def setUp(self):
