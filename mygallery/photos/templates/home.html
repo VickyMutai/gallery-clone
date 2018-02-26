@@ -2,104 +2,161 @@
 {% block content %}
 {{block.super}}
 <div class="container">
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs nav-justified">
     <li class="active"><a href="#all" data-toggle="tab">Home</a></li>
     <li><a href="#animal" data-toggle="tab">Animals</a></li>
     <li><a href="#nature" data-toggle="tab">Nature</a></li>
     <li><a href="#art" data-toggle="tab">Art</a></li>
-    <li><a href="#architecure" data-toggle="tab">Architecture</a></li>
+    <li><a href="#architecture" data-toggle="tab">Architecture</a></li>
     <li><a href="#photography" data-toggle="tab">Photography</a></li>
 </ul>
 <div class="tab-content">
-{% for image_item in images %}
-<!-- Output all images -->
 <div id="all" class="row tab-pane fade in active">
+{% for image_item in images %}
+        <!-- Output all images -->
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
     {% for category in image_item.category.all %}
-        <h2>{{category}}</h2>
+        <h2>{{category | upper}}</h2>
     {% endfor %}
     {% if image_item.image_url %}
-        <img src="{{image_item.image_url.url}}" class="img-responsive img-thumbnail" alt="Image" style="width:30%;height:30%">
+        <img src="{{image_item.image_url.url}}" class="img-responsive" alt="Image"/>
     {% endif %}
         <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
+        <p>{{image_item.upload_date}}</p>
     {% for location in image_item.location.all %}
         {{location}}
     {% endfor %}
+    </div>
+{% endfor %}
 </div>
 
 <div id="animal" class="row tab-pane fade">
-    {% for category in image_item.category.all %}
-        {% if category.name == "animal" %}
-            <h2>{{category}}</h2>
-            {% if image_item.image_url %}
-            <img src="{{image_item.image_url.url}}" class="img-responsive img-thumbnail" alt="Image" style="width:30%;height:30%">
-            {% endif %}
-            <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
-            {% for location in image_item.location.all %}
-                {{location}}
+        {% for image_item in images %}
+                <!-- Output all images -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            {% for category in image_item.category.all %}
+                {% if category.category_name == "animal" %}
+                    <h2>{{category | upper}}</h2>
+                    {% if image_item.image_url %}
+                        <img src="{{image_item.image_url.url}}" class="img-responsive" alt="Image"/>
+                    {% endif %}
+                    <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
+                    <p>{{image_item.upload_date}}</p>
+                    {% for location in image_item.location.all %}
+                        {{location}}
+                    {% endfor %}
+                {% endif %}
             {% endfor %}
-        {% endif %}
-    {% endfor %}
-</div>
+            </div>
+        {% endfor %}
+</div>        
 
 <div id="nature" class="row tab-pane fade">
-        {% for category in image_item.category.all %}
-            {% if category.name == "nature" %}
-                <h2>{{category}}</h2>
-                {% if image_item.image_url %}
-                <img src="{{image_item.image_url.url}}" class="img-responsive img-thumbnail" alt="Image" style="width:30%;height:30%">
+        {% for image_item in images %}
+                <!-- Output all images -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            {% for category in image_item.category.all %}
+                {% if category.category_name == "nature" %}
+                    <h2>{{category | upper}}</h2>
+                    {% if image_item.image_url %}
+                        <img src="{{image_item.image_url.url}}" class="img-responsive" alt="Image"/>
+                    {% endif %}
+                    <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
+                    <p>{{image_item.upload_date}}</p>
+                    {% for location in image_item.location.all %}
+                        {{location}}
+                    {% endfor %}
                 {% endif %}
-                <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
-                {% for location in image_item.location.all %}
-                    {{location}}
-                {% endfor %}
-            {% endif %}
+            {% endfor %}
+            </div>
         {% endfor %}
-</div>
+</div>        
 
 <div id="art" class="row tab-pane fade">
-        {% for category in image_item.category.all %}
-            {% if category.name == "art" %}
-                <h2>{{category}}</h2>
-                {% if image_item.image_url %}
-                <img src="{{image_item.image_url.url}}" class="img-responsive img-thumbnail" alt="Image" style="width:30%;height:30%">
+        {% for image_item in images %}
+                <!-- Output all images -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            {% for category in image_item.category.all %}
+                {% if category.category_name == "art" %}
+                    <h2>{{category | upper}}</h2>
+                    {% if image_item.image_url %}
+                        <img src="{{image_item.image_url.url}}" class="img-responsive" alt="Image"/>
+                    {% endif %}
+                    <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
+                    <p>{{image_item.upload_date}}</p>
+                    {% for location in image_item.location.all %}
+                        {{location}}
+                    {% endfor %}
                 {% endif %}
-                <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
-                {% for location in image_item.location.all %}
-                    {{location}}
-                {% endfor %}
-            {% endif %}
+            {% endfor %}
+            </div>
         {% endfor %}
-</div>
+</div>        
+
+
+<div id="art" class="row tab-pane fade">
+        {% for image_item in images %}
+                <!-- Output all images -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            {% for category in image_item.category.all %}
+                {% if category.category_name == "art" %}
+                    <h2>{{category | upper}}</h2>
+                    {% if image_item.image_url %}
+                        <img src="{{image_item.image_url.url}}" class="img-responsive" alt="Image"/>
+                    {% endif %}
+                    <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
+                    <p>{{image_item.upload_date}}</p>
+                    {% for location in image_item.location.all %}
+                        {{location}}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endfor %}
+</div>        
 
 <div id="architecture" class="row tab-pane fade">
-        {% for category in image_item.category.all %}
-            {% if category.name == "architecture" %}
-                <h2>{{category}}</h2>
-                {% if image_item.image_url %}
-                <img src="{{image_item.image_url.url}}" class="img-responsive img-thumbnail" alt="Image" style="width:30%;height:30%">
+        {% for image_item in images %}
+                <!-- Output all images -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            {% for category in image_item.category.all %}
+                {% if category.category_name == "architecture" %}
+                    <h2>{{category | upper}}</h2>
+                    {% if image_item.image_url %}
+                        <img src="{{image_item.image_url.url}}" class="img-responsive" alt="Image"/>
+                    {% endif %}
+                    <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
+                    <p>{{image_item.upload_date}}</p>
+                    {% for location in image_item.location.all %}
+                        {{location}}
+                    {% endfor %}
                 {% endif %}
-                <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
-                {% for location in image_item.location.all %}
-                    {{location}}
-                {% endfor %}
-            {% endif %}
+            {% endfor %}
+            </div>
         {% endfor %}
-</div>
+</div>        
+
 <div id="photography" class="row tab-pane fade">
-        {% for category in image_item.category.all %}
-            {% if category.name == "photography"%}
-                <h2>{{category}}</h2>
-                {% if image_item.image_url %}
-                <img src="{{image_item.image_url.url}}" class="img-responsive img-thumbnail" alt="Image" style="width:30%;height:30%">
+        {% for image_item in images %}
+                <!-- Output all images -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            {% for category in image_item.category.all %}
+                {% if category.category_name == "photography" %}
+                    <h2>{{category | upper}}</h2>
+                    {% if image_item.image_url %}
+                        <img src="{{image_item.image_url.url}}" class="img-responsive" alt="Image"/>
+                    {% endif %}
+                    <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
+                    <p>{{image_item.upload_date}}</p>
+                    {% for location in image_item.location.all %}
+                        {{location}}
+                    {% endfor %}
                 {% endif %}
-                <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
-                {% for location in image_item.location.all %}
-                    {{location}}
-                {% endfor %}
-            {% endif %}
+            {% endfor %}
+            </div>
         {% endfor %}
+</div>        
+
 </div>
 </div>
-{% endfor %}
-</div>
-{% endblock %}                                                                                           
+{% endblock %}

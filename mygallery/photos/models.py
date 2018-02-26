@@ -36,9 +36,6 @@ class Image(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta:
-        ordering = ['upload_date']
-
     def save_image(self):
         self.save()
 
