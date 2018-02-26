@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Location(models.Model):
-    name = models.CharField(max_length = 30)
+    location_name = models.CharField(max_length = 30)
 
     def __str__(self):
-        return self.name
+        return self.location_name
 
     def save_location(self):
         self.save()
@@ -14,16 +14,21 @@ class Location(models.Model):
         self.delete()
 
 class Category(models.Model):
-    name = models.CharField(max_length=30)
+    category_name = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.name    
+        return self.category_name    
 
     def save_category(self):
         self.save()
 
     def delete_category(self):
         self.delete()
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        category = cls.objects.filter(name__icontains=search_term)
+        return category
 
 class Image(models.Model):
     name = models.CharField(max_length=30)
@@ -54,8 +59,3 @@ class Image(models.Model):
     def filter_by_location(cls,id):
         images = Image.objects.filter(id=location.id)
         return images
-
-    @classmethod
-    def search_by_category(cls, search_term):
-        category = cls.objects.filter(category__category__icontains=search_term)
-        return category
