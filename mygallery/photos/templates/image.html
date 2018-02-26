@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% load macros %}
 {% block content %}
+{{block.super}}
+<script>
+    function myFunction() {
+      var copyText = document.getElementById("myInput");
+      copyText.select();
+      document.execCommand("Copy");
+      alert("Copied the text: " + copyText.value);
+    }
+  </script>
 <div class="container">
     <div class="row">
         <img src="{{image.image_url.url}}" class="img-responsive img-thumbnail" alt="">
@@ -9,5 +18,7 @@
         {{image.name}}
         <p>{{image.description}}</p>
     </div>
+    <input class="form-control" type="text" value="{{image.image_url}}" id="myInput">
+    <a onclick="myFunction()" class="btn-info">Copy link</a>
 </div>
 {% endblock %}
