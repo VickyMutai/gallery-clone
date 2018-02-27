@@ -38,9 +38,7 @@
             {% for category in image_item.category.all %}
                 {% if category.category_name == "animal" %}
                     <h2>{{category | upper}}</h2>
-                    {% if image_item.image_url %}
-                        <img src="{{image_item.image_url.url}}" class="img-responsive" alt="Image"/>
-                    {% endif %}
+                        <img src="{{image_item.image_url.url}}" class="img-responsive" alt="Image">
                     <a href="/image/{{image_item.id}}">{{image_item.name}}</a>
                     <p>{{image_item.upload_date}}</p>
                     {% for location in image_item.location.all %}
