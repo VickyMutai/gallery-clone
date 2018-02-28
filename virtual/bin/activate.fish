@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/vicky/Desktop/core/django/gallery/virtual"
+set -gx VIRTUAL_ENV "/home/vicky/Desktop/clone/gallery/virtual"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

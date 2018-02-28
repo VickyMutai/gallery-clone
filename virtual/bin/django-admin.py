@@ -1,4 +1,4 @@
-#!/home/vicky/Desktop/core/django/gallery/virtual/bin/python3.6
+#!/home/vicky/Desktop/clone/gallery/virtual/bin/python3.6
 from django.core import management
 
 if __name__ == "__main__":
